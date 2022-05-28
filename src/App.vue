@@ -2,17 +2,16 @@
   <div>
     <h1>Witaj w systemie do zapisów na zajęcia</h1>
    
-
+ 
   <div v-if="!isAuthenticated">
-    Zaloguj się e-mailem
-    <input type="email" v-model="email">
-    <button @click="login()">Wchodzę</button>
+   <login-form @login="logIn($event)"></login-form>
     </div>
 
 <div v-else>
- <h2>Witaj {{ email }}</h2>
- <a @click="logout()">Wyloguj się</a>
-</div>
+ <logged-panel @logout="logOut()"
+ :username="isAuthenticated"></logged-panel>
+</div> 
+
 
   </div>
 
@@ -20,20 +19,23 @@
 
 <script>
 import "milligram";
+import LoginForm from "./LoginForm";
+import LoggedPanel from "./LoggedPanel";
 
 export default {
+  components: {LoginForm,
+  LoggedPanel},
+
   data() {
-    return {
-      email: "",
-      
+    return {  
       isAuthenticated: false
     };
   },
   methods: {
-  login() {
-    this.isAuthenticated = true;
+  logIn(username) {
+    this.isAuthenticated = username;
   },
-  logout() {
+  logOut() {
     this.isAuthenticated = false;
   }
 }
@@ -45,4 +47,4 @@ export default {
   color:red;
 }
 </style>
-// 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
+// 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
