@@ -11,7 +11,7 @@
 
 <div v-else>
  <h2>Witaj {{ email }}</h2>
- <button @click="logout()">Wyloguj się</button>
+ <a @click="logout()">Wyloguj się</a>
 </div>
 
   </div>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import "milligram";
+
 export default {
   data() {
     return {
