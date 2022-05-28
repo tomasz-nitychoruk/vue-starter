@@ -3,13 +3,13 @@
     <h1>Witaj w systemie do zapisów na zajęcia</h1>
    
 
-  <div v-if="logged === false">
-    <p>Zaloguj się e-mailem</p>
+  <div v-if="!isAuthenticated">
+    Zaloguj się e-mailem
     <input type="email" v-model="email">
     <button @click="login()">Wchodzę</button>
     </div>
 
-<div v-if="logged === true">
+<div v-else>
  <h2>Witaj {{ email }}</h2>
  <button @click="logout()">Wyloguj się</button>
 </div>
@@ -23,15 +23,16 @@ export default {
   data() {
     return {
       email: "",
-      logged: false
+      
+      isAuthenticated: false
     };
   },
   methods: {
   login() {
-    this.logged = true;
+    this.isAuthenticated = true;
   },
   logout() {
-    this.logged = false;
+    this.isAuthenticated = false;
   }
 }
 }
@@ -42,4 +43,4 @@ export default {
   color:red;
 }
 </style>
-// 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
+// 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
